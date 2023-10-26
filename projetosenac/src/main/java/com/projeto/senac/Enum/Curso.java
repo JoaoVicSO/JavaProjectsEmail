@@ -12,6 +12,7 @@ public enum Curso {
 	
 	private Curso(String curso) {
 		this.curso = curso;
+		
 	}
-	
+
 }
