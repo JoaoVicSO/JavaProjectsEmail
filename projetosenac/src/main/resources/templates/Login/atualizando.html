@@ -25,11 +25,11 @@
 							<form id="cadastro-form" class="form" method="post" th:object="${usuario}"
 								action="atualizarUsuario">
 								<h3 class="text-center text-info">Formulário de atualização de senha</h3>
-								
+
 								<div class="alert alert-danger" role="alert" th:if="${msg}">
 									<strong th:text="${msg}"></strong>
 								</div>
-								
+
 								<div class="form-group">
 									<label for="email" class="text-info">Email:</label><br>
 									<input type="email" name="email" id="email" th:field="*{email}" placeholder="email"
@@ -40,19 +40,19 @@
 									<input type="text" name="username" id="username" th:field="*{login}"
 										placeholder="username" class="form-control" readonly>
 								</div>
-								
+
 								<div class="form-group">
 									<label for="password" class="text-info">Senha:</label><br>
 									<input type="password" name="password" id="password" th:field="*{senha}"
 										placeholder="password" class="form-control">
 								</div>
-								
+
 								<div class="form-group">
 									<label for="password" class="text-info">Repetir Senha:</label><br>
 									<input type="password" name="password2" id="password2" th:field="*{senha2}"
 										placeholder="password" class="form-control">
 								</div>
-								
+
 								<div id="register-link" class="text-center">
 									<button type="submit" class="btn btn-success">Cadastrar</button>
 								</div>
