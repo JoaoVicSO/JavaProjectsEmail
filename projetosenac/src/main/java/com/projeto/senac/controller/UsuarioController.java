@@ -37,12 +37,12 @@ public class UsuarioController {
 		return mv;
 	}// fim get login
 
-	@GetMapping("/workSpace")
+	@GetMapping("/Home")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Login/index");
 		return mv;
-	}// fim get workSpace
+	}// fim get Home
 
 	@PostMapping("/login")
 	public ModelAndView login(@Valid Usuario usuario, BindingResult br, HttpSession session)
@@ -59,7 +59,7 @@ public class UsuarioController {
 			mv.setViewName("login/login");
 		} else {
 			session.setAttribute("usuarioLogado", userLogin);
-			mv.setViewName("redirect:/workSpace");
+			mv.setViewName("redirect:/Home");
 		}
 		return mv;
 	}// fim login
@@ -106,6 +106,7 @@ public class UsuarioController {
 			mv.setViewName("Login/recuperar");
 				
 		} // fim if
+		
 		else { // existe email no banco
 			aux.setToken(Util.generateToken());
 			usuarioRepository.save(aux);
