@@ -37,9 +37,19 @@ public class Aluno implements Serializable {
 	private String turno;
 	
 	private String matricula;
+	
+	private String cpf;
 
 	// GET and SET
 	
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	public Long getId() {
 		return id;
 	}

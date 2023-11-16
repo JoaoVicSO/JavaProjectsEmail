@@ -32,7 +32,7 @@
 
 					<li class="nav-item active">
 
-						<a class="nav-link" href="#"><i class="fa fa-home"></i> Home <span class="sr-only">(Página
+						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span class="sr-only">(Página
 								atual)</span></a>
 
 					</li>
@@ -45,7 +45,7 @@
 
 					<li class="nav-item">
 
-						<a class="nav-link" href="#"><i class="fa fa-search"></i> Pesquisar ALuno</a>
+						<a class="nav-link" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Pesquisar Aluno</a>
 
 					</li>
 
@@ -85,13 +85,13 @@
 
 				<div class="Wm">
 
-					<button class="btn btn-primary" >Cadastrar Aluno</button>
+					<a class="btn btn-primary" th:href="@{InserirAluno}" >Cadastrar Aluno</a>
 
 				</div>
 
 				<div class="Wm">
 
-					<button class="btn btn-success">Encontrar Aluno</button>
+					<a class="btn btn-success">Encontrar Aluno</a>
 
 				</div>
 
