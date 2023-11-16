@@ -1,0 +1,162 @@
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.thymeleaf.org">
+
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<title>Página Alteração</title>
+
+</head>
+
+<body>
+
+	<header>
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+			<div class="collapse navbar-collapse" id="textoNavbar">
+
+				<ul class="navbar-nav mr-auto">
+
+					<li class="nav-item active">
+
+						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span class="sr-only">(Página
+								atual)</span></a>
+
+					</li>
+
+					<li class="nav-item">
+
+						<a class="nav-link" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i> Cadastrar Aluno</a>
+
+					</li>
+
+					<li class="nav-item">
+
+						<a class="nav-link" href="#"><i class="fa fa-search"></i> Pesquisar Aluno</a>
+
+					</li>
+					
+					<li class="nav-item">
+
+						<a class="nav-link" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Alunos</a>
+
+					</li>
+
+				</ul>
+
+				<span class="navbar-text">
+
+					<div class="collapse navbar-collapse" id="textoNavbar">
+
+						<ul class="navbar-nav mr-auto">
+
+							<li class="nav-item">
+
+								<a class="nav-link" href="#"><i class="fa fa-times"></i> Sair</a>
+
+							</li>
+
+						</ul>
+
+					</div>
+
+				</span>
+
+			</div>
+
+		</nav>
+
+	</header>
+
+	<div class="container">
+		<h2>+Alterar Aluno</h2>
+		<form action="/alterar" th:object="${aluno}" method="Post" name="formulario">
+			<div class="col-md-6 offset-md-3">
+				<div class="alert alert-danger" role="alert" th:if="${msg}">
+					<strong th:text="${msg}"></strong>
+				</div>
+			</div>
+			
+			<input type="hidden" th:field="*{id}">
+			
+			<div class="form-group">
+				<div class="col-md-6 offset-md-3">
+					<label>Nome</label>
+					<input type="text" name="nome" id="nome" class="form-control" th:field="*{nome}" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-6 offset-md-3">
+					<label>Cpf</label>
+					<input type="text" maxlength="11" pattern="[0-9]{11}" name="cpf" id="cpf" class="form-control"
+						th:field="*{cpf}" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-6 offset-md-3">
+					<label>Selecione o Curso</label>
+					<select class="form-control" th:field="*{curso}">
+						<option th:each="curso:${T(com.projeto.senac.Enum.Curso).values()}" th:value="${curso}"
+							th:text="${curso}">
+						</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-md-6 offset-md-3">
+					<label>Matrícula</label>
+					<input type="text" name="matricula" id="matricula" class="form-control" th:field="#{matricula}" readonly="readonly" required>
+				</div>
+			</div>
+			
+			<div class="col-md-6 offset-md-3">
+				<label>Selecione o Status</label>
+				<select class="form-control" th:field="#{status}">
+					<option th:each="status: ${T(com.projeto.senac.Enum.Status).values()}" th:value="${status}"
+						th:text="${status}">
+					</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-md-6 offset-md-3">
+					<label>Selecione o Turno</label>
+					<select class="form-control" th:field="*{turno}">
+						<option th:value="M" th:text="Matutino"></option>
+						<option th:value="N" th:text="Noturno"></option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-md-8 offset-md-5">
+					<input type="submit" value="Salvar" class="btn btn-primary" name="Salvar">
+				</div>
+			</div>
+			
+		</form>
+	</div>
+
+	<footer class="bg-primary text-center text-lg-start">
+
+		<!-- Grid container -->
+
+		<div>
+
+			<!-- Copyright -->
+
+			<div class="text-center p-3" style="color: #fff; font-weight: bold;">
+
+				© 2023 Copyright: SEN

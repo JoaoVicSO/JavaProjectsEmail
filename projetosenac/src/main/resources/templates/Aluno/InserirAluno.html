@@ -21,13 +21,31 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="collapse navbar-collapse" id="textoNavbar">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" th:href="@{Home}"> <i class="fa fa-home"></i> Home</a>
+<li class="nav-item active">
+
+						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span class="sr-only">(Página
+								atual)</span></a>
+
 					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-							<i class="fa fa-user"></i> Alunos
-						</a>
+
+					<li class="nav-item">
+
+						<a class="nav-link" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i> Cadastrar Aluno</a>
+
+					</li>
+
+					<li class="nav-item">
+
+						<a class="nav-link" href="#"><i class="fa fa-search"></i> Pesquisar Aluno</a>
+
+					</li>
+					
+					<li class="nav-item">
+
+						<a class="nav-link" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Alunos</a>
+
+					</li>
+					
 						<div class="dropdown-menu">
 							<a class="dropdown-item" th:href="@{inserirAlunos}"><i class='fa fa-graduation-cap'></i>
 								Cadastrar

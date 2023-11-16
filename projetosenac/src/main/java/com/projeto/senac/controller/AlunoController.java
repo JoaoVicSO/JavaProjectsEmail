@@ -3,6 +3,7 @@ package com.projeto.senac.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.projeto.senac.model.Aluno;
@@ -31,6 +32,15 @@ public class AlunoController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("alunos", alunoRepository.findAllOrderedById());
 		mv.setViewName("Aluno/listarAlunos");
+		return mv;
+	}
+	
+	@GetMapping("/alterar/{id}")
+	public ModelAndView getAlterar (@PathVariable("id") Long id) { 
+		ModelAndView mv = new ModelAndView();
+		Aluno aluno = alunoRepository.findById(id).get();
+		mv.addObject("aluno", aluno);
+		mv.setViewName("Aluno/alterar");
 		return mv;
 	}
 	

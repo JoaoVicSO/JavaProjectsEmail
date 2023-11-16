@@ -22,20 +22,38 @@
 			<div class="collapse navbar-collapse" id="textoNavbar">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" th:href="@{Home}"> <i class="fa fa-home"></i> Home</a>
+
+						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span class="sr-only">(Página
+								atual)</span></a>
+
 					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-							<i class="fa fa-user"></i> Alunos
-						</a>
+
+					<li class="nav-item">
+
+						<a class="nav-link" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i> Cadastrar Aluno</a>
+
+					</li>
+
+					<li class="nav-item">
+
+						<a class="nav-link" href="#"><i class="fa fa-search"></i> Pesquisar Aluno</a>
+
+					</li>
+					
+					<li class="nav-item">
+
+						<a class="nav-link" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Alunos</a>
+
+					</li>
+					
 						<div class="dropdown-menu">
 							<a class="dropdown-item" th:href="@{inserirAlunos}"><i class='fa fa-graduation-cap'></i>
 								Cadastrar
 								Aluno</a>
 							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar
-								ALunos</a>
+								Alunos</a>
 							<a class="dropdown-item" th:href="@{filtro-alunos}"><i class="fa fa-filter"></i> Filtrar
-								ALunos</a>
+								Alunos</a>
 						</div>
 					</li>
 				</ul>
@@ -78,8 +96,18 @@
 						<span th:case="M">Matutino</span>
 						<span th:case="N">Noturno</span>
 					</td>
-					<td class="text-center"><i class="fa fa-pencil-square"></i></td>
-					<td class="text-center"><i class="fa fa-trash"></i></td>
+					
+					<td class="text-center">
+					  <a class="btn btn-secondary" href="@{alterar/{id} (id=${aluno.id})}">
+						<i class="fa fa-pencil-square"></i>
+					  </a>
+					</td>
+						
+					<td class="text-center">
+					    <a class="btn btn-danger" href="@{excluir/{id} (id=${aluno.id})}">
+						   <i class="fa fa-trash"></i>
+					    </a>
+				    </td>
 				</tr>
 			</tbody>
 		</table>
