@@ -6,8 +6,9 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link type='text/css' rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
 
 
 	<!------ Include the above in your HEAD tag ---------->
@@ -23,39 +24,28 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 
-						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span class="sr-only">(Página
+						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span
+								class="sr-only">(Página
 								atual)</span></a>
 
 					</li>
 
-					<li class="nav-item">
-
-						<a class="nav-link" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i> Cadastrar Aluno</a>
-
-					</li>
-
-					<li class="nav-item">
-
-						<a class="nav-link" href="#"><i class="fa fa-search"></i> Pesquisar Aluno</a>
-
-					</li>
-					
-					<li class="nav-item">
-
-						<a class="nav-link" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Alunos</a>
-
-					</li>
-					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
+							<i class="fa fa-user"></i> Aluno</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{inserirAlunos}"><i class='fa fa-graduation-cap'></i>
-								Cadastrar
+							<a class="dropdown-item" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i>
+								Cadastrar Aluno</a>
+							<a class="dropdown-item" th:href="@{listarExcluirAlunos}"><i class="fa fa-trash"></i> Excluir
 								Aluno</a>
-							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar
-								Alunos</a>
-							<a class="dropdown-item" th:href="@{filtro-alunos}"><i class="fa fa-filter"></i> Filtrar
-								Alunos</a>
+							<a class="dropdown-item" th:href="@{listarEditarAlunos}"><i class="fa fa-pencil-square"></i>
+								Editar Alunos</a>
+							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Aluno</a>
+
 						</div>
+
 					</li>
+
 				</ul>
 				<span class="navbar-text">
 					<div class="collapse navbar-collapse" id="textoNavbar">
@@ -96,18 +86,18 @@
 						<span th:case="M">Matutino</span>
 						<span th:case="N">Noturno</span>
 					</td>
-					
+
 					<td class="text-center">
-					  <a class="btn btn-secondary" href="@{alterar/{id} (id=${aluno.id})}">
-						<i class="fa fa-pencil-square"></i>
-					  </a>
+						<a class="btn btn-secondary" th:href="@{alterar/{id} (id=${aluno.id})}">
+							<i class="fa fa-pencil-square"></i>
+						</a>
 					</td>
-						
+
 					<td class="text-center">
-					    <a class="btn btn-danger" href="@{excluir/{id} (id=${aluno.id})}">
-						   <i class="fa fa-trash"></i>
-					    </a>
-				    </td>
+						<a class="btn btn-danger" th:href="@{excluir/{id} (id=${aluno.id})}">
+							<i class="fa fa-trash"></i>
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

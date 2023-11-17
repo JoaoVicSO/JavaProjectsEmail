@@ -47,4 +47,22 @@ public class ServiceAluno {
 		return null;
 	}// Fim cadastrar Aluno
 	
+	
+	public String alterarAluno(Aluno aluno, Long id) {
+		// Verificar se existe um aluno com o mesmo CPF
+		Aluno alunoExistente = alunoRepository.findbyCpf(aluno.getCpf());
+			if((alunoExistente != null && alunoExistente.getId() == id) || alunoExistente == null) { 
+				alunoRepository.save(aluno);
+				
+			}
+			else { // Já possui aluno gravado no BD
+				return "Já existe um Aluno cadastrado com o mesmo CPF!";
+				
+			}
+			
+			return null; // Ocorreu tudo bem e foi atualizado a base de dados	
+			
+		}// Fim cadastrar Aluno
+		
+	
 }

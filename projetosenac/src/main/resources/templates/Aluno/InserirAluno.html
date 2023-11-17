@@ -6,8 +6,8 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link type='text/css' rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 
 	<!------ Include the above in your HEAD tag ---------->
@@ -21,40 +21,28 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="collapse navbar-collapse" id="textoNavbar">
 				<ul class="navbar-nav mr-auto">
-<li class="nav-item active">
+					<li class="nav-item active">
 
-						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span class="sr-only">(Página
+						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span
+								class="sr-only">(Página
 								atual)</span></a>
 
 					</li>
 
-					<li class="nav-item">
-
-						<a class="nav-link" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i> Cadastrar Aluno</a>
-
-					</li>
-
-					<li class="nav-item">
-
-						<a class="nav-link" href="#"><i class="fa fa-search"></i> Pesquisar Aluno</a>
-
-					</li>
-					
-					<li class="nav-item">
-
-						<a class="nav-link" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Alunos</a>
-
-					</li>
-					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
+							<i class="fa fa-user"></i> Aluno</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{inserirAlunos}"><i class='fa fa-graduation-cap'></i>
-								Cadastrar
+							<a class="dropdown-item" th:href="@{listarExcluirAlunos}"><i class="fa fa-trash"></i>
+								Excluir
 								Aluno</a>
+							<a class="dropdown-item" th:href="@{listarEditarAlunos}"><i class="fa fa-pencil-square"></i>
+								Editar Alunos</a>
 							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar
-								ALunos</a>
-							<a class="dropdown-item" th:href="@{filtro-alunos}"><i class="fa fa-filter"></i> Filtrar
-								ALunos</a>
+								Aluno</a>
+
 						</div>
+
 					</li>
 				</ul>
 				<span class="navbar-text">
@@ -72,19 +60,20 @@
 	<h2>+ Inserir um novo Aluno</h2>
 	<form action="/inserirAluno" th:object="${aluno}" method="POST" name="formulario">
 		<div class="form-group">
-		        <div class="alert alert-danger" role="alert" th:if="${msg}">
+			<div class="alert alert-danger" role="alert" th:if="${msg}">
 				<strong th:text="${msg}"></strong>
 			</div>
-   	                       <div class=" col-md-6 offset-md-3">
+			<div class=" col-md-6 offset-md-3">
 				<label>Nome</label>
 				<input type="text" name="nome" class="form-control" placeholder="Nome" th:field="*{nome}" required>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<div class=" col-md-6 offset-md-3">
 				<label>Cpf</label>
-<input type="text" maxlength="11" id="cpf" name="cpf" pattern="[0-9]{11}" class="form-control" placeholder="CPF (apenas números)" th:field="*{cpf}" required>
+				<input type="text" maxlength="11" id="cpf" name="cpf" pattern="[0-9]{11}" class="form-control"
+					placeholder="CPF (apenas números)" th:field="*{cpf}" required>
 			</div>
 		</div>
 		<div class="form-group">
@@ -97,8 +86,8 @@
 				</select>
 			</div>
 		</div>
-		
-		
+
+
 		<div class="form-group">
 			<div class="col-md-6 offset-md-3">
 				<label>Selecione o Status</label>

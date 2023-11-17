@@ -44,6 +44,24 @@ public class AlunoController {
 		return mv;
 	}
 	
+	@PostMapping("/alterar")
+	public ModelAndView alterarAluno(Aluno aluno) {
+		ModelAndView mv = new ModelAndView();
+		String out = serviceAluno.alterarAluno(aluno, aluno.getId());
+		
+		if(out!=null) {			
+			mv.addObject("msg", out);
+			mv.addObject("aluno", aluno);
+			mv.setViewName("Aluno/alterar");
+		}
+		else {
+			mv.setViewName("redirect:/listarAlunos");
+		}
+		return mv;
+		
+		
+	}
+	
 	@PostMapping("/inserirAluno")
 	public ModelAndView inserir(Aluno aluno) {
 		ModelAndView mv = new ModelAndView();
@@ -61,4 +79,12 @@ public class AlunoController {
 		}
 		return mv;
 	}	
+	
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable("id") Long id) {		
+		alunoRepository.deleteById(id);
+		return "redirect:/listarAlunos";
+	}
+	
+
 }

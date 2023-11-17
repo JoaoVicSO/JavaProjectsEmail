@@ -12,9 +12,10 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<title>Página Principal</title>
 
@@ -25,36 +26,30 @@
 	<header>
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-
+			
 			<div class="collapse navbar-collapse" id="textoNavbar">
-
 				<ul class="navbar-nav mr-auto">
-
 					<li class="nav-item active">
-
-						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span class="sr-only">(Página
+						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span
+								class="sr-only">(Página
 								atual)</span></a>
-
 					</li>
 
-					<li class="nav-item">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
+							<i class="fa fa-user"></i> Aluno</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i>
+								Cadastrar Aluno</a>
+							<a class="dropdown-item" th:href="@{listarExcluirAlunos}"><i class="fa fa-trash"></i> Excluir
+								Aluno</a>
+							<a class="dropdown-item" th:href="@{listarEditarAlunos}"><i class="fa fa-pencil-square"></i>
+								Editar Alunos</a>
+							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Aluno</a>
 
-						<a class="nav-link" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i> Cadastrar Aluno</a>
-
-					</li>
-
-					<li class="nav-item">
-
-						<a class="nav-link" href="#"><i class="fa fa-search"></i> Pesquisar Aluno</a>
-
-					</li>
-					
-					<li class="nav-item">
-
-						<a class="nav-link" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Alunos</a>
+						</div>
 
 					</li>
-
 
 				</ul>
 
@@ -92,7 +87,7 @@
 
 				<div class="Wm">
 
-					<a class="btn btn-primary" th:href="@{InserirAluno}" >Cadastrar Aluno</a>
+					<a class="btn btn-primary" th:href="@{InserirAluno}">Cadastrar Aluno</a>
 
 				</div>
 
