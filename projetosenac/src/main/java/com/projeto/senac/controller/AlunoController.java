@@ -35,6 +35,17 @@ public class AlunoController {
 		return mv;
 	}
 	
+	
+	@GetMapping("/listarEditarAlunos")
+	public ModelAndView listarEditarAlunos() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("alunos", alunoRepository.findAllOrderedById());
+		mv.setViewName("Aluno/listarEditarAlunos");
+		return mv;
+	}
+	
+	
+	
 	@GetMapping("/alterar/{id}")
 	public ModelAndView getAlterar (@PathVariable("id") Long id) { 
 		ModelAndView mv = new ModelAndView();
@@ -55,7 +66,7 @@ public class AlunoController {
 			mv.setViewName("Aluno/alterar");
 		}
 		else {
-			mv.setViewName("redirect:/listarAlunos");
+			mv.setViewName("redirect:/listarEditarAlunos");
 		}
 		return mv;
 		
@@ -79,6 +90,14 @@ public class AlunoController {
 		}
 		return mv;
 	}	
+	
+	@GetMapping("/listarExcluirAlunos")
+	public ModelAndView listarExcluirAlunos() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("alunos", alunoRepository.findAllOrderedById());
+		mv.setViewName("Aluno/listarExcluirAlunos");
+		return mv;
+	}
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id) {		

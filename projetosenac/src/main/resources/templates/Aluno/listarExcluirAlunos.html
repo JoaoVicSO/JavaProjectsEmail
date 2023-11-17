@@ -36,10 +36,9 @@
 						<div class="dropdown-menu">
 							<a class="dropdown-item" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i>
 								Cadastrar Aluno</a>
-							<a class="dropdown-item" th:href="@{listarExcluirAlunos}"><i class="fa fa-trash"></i> Excluir
-								Aluno</a>
 							<a class="dropdown-item" th:href="@{listarEditarAlunos}"><i class="fa fa-pencil-square"></i>
 								Editar Alunos</a>
+							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Aluno</a>
 
 						</div>
 
@@ -76,7 +75,7 @@
 	</header>
 
 	<div class="container">
-		<h2>Alunos Adicionados</h2>
+		<h2>Alunos Editar</h2>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -86,6 +85,7 @@
 					<th class="text-center" scope="col">Matrícula</th>
 					<th class="text-center" scope="col">Status</th>
 					<th class="text-center" scope="col">Turno</th>
+					<th class="text-center" scope="col">Excluir</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -98,6 +98,12 @@
 					<td class="text=center" th:text="${aluno.turno}">
 						<span th:case="M">Matutino</span>
 						<span th:case="N">Noturno</span>
+					</td>
+
+					<td class="text-center">
+						<a class="btn btn-danger" th:href="@{excluir/{id} (id=${aluno.id})}">
+							<i class="fa fa-trash"></i>
+						</a>
 					</td>
 
 				</tr>

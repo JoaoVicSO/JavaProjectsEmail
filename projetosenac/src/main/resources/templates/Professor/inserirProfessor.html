@@ -10,9 +10,8 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 
-
 	<!------ Include the above in your HEAD tag ---------->
-	<title>Listar Alunos</title>
+	<title>Inserir Professor</title>
 </head>
 
 
@@ -34,12 +33,13 @@
 						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
 							<i class="fa fa-user"></i> Aluno</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i>
-								Cadastrar Aluno</a>
-							<a class="dropdown-item" th:href="@{listarExcluirAlunos}"><i class="fa fa-trash"></i> Excluir
+							<a class="dropdown-item" th:href="@{listarExcluirAlunos}"><i class="fa fa-trash"></i>
+								Excluir
 								Aluno</a>
 							<a class="dropdown-item" th:href="@{listarEditarAlunos}"><i class="fa fa-pencil-square"></i>
 								Editar Alunos</a>
+							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar
+								Aluno</a>
 
 						</div>
 
@@ -49,8 +49,7 @@
 						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
 							<i class="fa fa-user"></i> Professor</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{inserirProfessor}"><i class="fa fa-graduation-cap"></i>
-								Cadastrar Professor</a>
+
 							<a class="dropdown-item" th:href="@{listarExcluirProfessor}"><i class="fa fa-trash"></i> Excluir
 								Professor</a>
 							<a class="dropdown-item" th:href="@{listarEditarProfessor}"><i class="fa fa-pencil-square"></i>
@@ -60,7 +59,7 @@
 						</div>
 
 					</li>
-
+					
 				</ul>
 				<span class="navbar-text">
 					<div class="collapse navbar-collapse" id="textoNavbar">
@@ -74,37 +73,44 @@
 			</div>
 		</nav>
 	</header>
+	<h2>+ Inserir um novo Professor</h2>
+	<form action="/inserirProfessor" th:object="${professor}" method="Post" name="formulario">
+		<div class="form-group">
+			<div class="alert alert-danger" role="alert" th:if="${msg}">
+				<strong th:text="${msg}"></strong>
+			</div>
+			<div class=" col-md-6 offset-md-3">
+				<label>Nome</label>
+				<input type="text" name="nome" class="form-control" placeholder="Nome" th:field="*{nome}" required>
+			</div>
+		</div>
 
-	<div class="container">
-		<h2>Alunos Adicionados</h2>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th class="text-center" scope="col">Nome</th>
-					<th class="text-center" scope="col">CPF</th>
-					<th class="text-center" scope="col">Curso</th>
-					<th class="text-center" scope="col">Matrícula</th>
-					<th class="text-center" scope="col">Status</th>
-					<th class="text-center" scope="col">Turno</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr scope="row" th:each="aluno:${alunos}">
-					<td class="text=center" th:text="${aluno.nome}"></td>
-					<td class="text=center" th:text="${aluno.cpf}"></td>
-					<td class="text=center" th:text="${aluno.curso}"></td>
-					<td class="text=center" th:text="${aluno.matricula}"></td>
-					<td class="text=center" th:text="${aluno.status}"></td>
-					<td class="text=center" th:text="${aluno.turno}">
-						<span th:case="M">Matutino</span>
-						<span th:case="N">Noturno</span>
-					</td>
+		<div class="form-group">
+			<div class=" col-md-6 offset-md-3">
+				<label>Cpf</label>
+				<input type="text" maxlength="11" id="cpf" name="cpf" pattern="[0-9]{11}" class="form-control"
+					placeholder="CPF (apenas números)" th:field="*{cpf}" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Selecione o Título</label>
+				<select class="form-control" th:field="*{titulacao}">
+					<option th:each="titulacao : ${T(com.projeto.senac.Enum.Titulacao).values()}" th:value="${titulacao}"
+						th:text="${titulacao}">
+					</option>
+				</select>
+			</div>
+		</div>
 
-				</tr>
-			</tbody>
-		</table>
-	</div>
 
+		<div class="form-group">
+			<div class="col-md-8 offset-md-5">
+				<input type="submit" value="Salvar" class="btn btn-primary" name="Salvar">
+			</div>
+		</div>
+		
+	</form>
 
 
 	<footer class="bg-primary text-center text-lg-start">

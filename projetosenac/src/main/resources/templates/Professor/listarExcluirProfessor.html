@@ -36,10 +36,9 @@
 						<div class="dropdown-menu">
 							<a class="dropdown-item" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i>
 								Cadastrar Aluno</a>
-							<a class="dropdown-item" th:href="@{listarExcluirAlunos}"><i class="fa fa-trash"></i> Excluir
-								Aluno</a>
 							<a class="dropdown-item" th:href="@{listarEditarAlunos}"><i class="fa fa-pencil-square"></i>
 								Editar Alunos</a>
+							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar Aluno</a>
 
 						</div>
 
@@ -51,8 +50,6 @@
 						<div class="dropdown-menu">
 							<a class="dropdown-item" th:href="@{inserirProfessor}"><i class="fa fa-graduation-cap"></i>
 								Cadastrar Professor</a>
-							<a class="dropdown-item" th:href="@{listarExcluirProfessor}"><i class="fa fa-trash"></i> Excluir
-								Professor</a>
 							<a class="dropdown-item" th:href="@{listarEditarProfessor}"><i class="fa fa-pencil-square"></i>
 								Editar Professor</a>
 							<a class="dropdown-item" th:href="@{listarProfessores}"><i class="fa fa-search"></i> Listar Professor</a>
@@ -76,28 +73,26 @@
 	</header>
 
 	<div class="container">
-		<h2>Alunos Adicionados</h2>
+		<h2>Excluir Professor</h2>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th class="text-center" scope="col">Nome</th>
 					<th class="text-center" scope="col">CPF</th>
-					<th class="text-center" scope="col">Curso</th>
-					<th class="text-center" scope="col">Matrícula</th>
-					<th class="text-center" scope="col">Status</th>
-					<th class="text-center" scope="col">Turno</th>
+					<th class="text-center" scope="col">Titulação</th>
+					<th class="text-center" scope="col">Excluir</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr scope="row" th:each="aluno:${alunos}">
-					<td class="text=center" th:text="${aluno.nome}"></td>
-					<td class="text=center" th:text="${aluno.cpf}"></td>
-					<td class="text=center" th:text="${aluno.curso}"></td>
-					<td class="text=center" th:text="${aluno.matricula}"></td>
-					<td class="text=center" th:text="${aluno.status}"></td>
-					<td class="text=center" th:text="${aluno.turno}">
-						<span th:case="M">Matutino</span>
-						<span th:case="N">Noturno</span>
+				<tr scope="row" th:each="professor:${professores}">
+					<td class="text=center" th:text="${professor.nome}"></td>
+					<td class="text=center" th:text="${professor.cpf}"></td>
+					<td class="text=center" th:text="${professor.titulacao}"></td>
+
+					<td class="text-center">
+						<a class="btn btn-danger" th:href="@{excluirProfessor/{id} (id=${professor.id})}">
+							<i class="fa fa-trash"></i>
+						</a>
 					</td>
 
 				</tr>
