@@ -25,7 +25,7 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 
-						<a class="nav-link" th:href="@{Home}"><i class="fa fa-home"></i> Home <span
+						<a class="nav-link" th:href="@{/Home}"><i class="fa fa-home"></i> Home <span
 								class="sr-only">(Página
 								atual)</span></a>
 
@@ -35,12 +35,12 @@
 						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
 							<i class="fa fa-user"></i> Aluno</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{InserirAluno}"><i class="fa fa-graduation-cap"></i>
+							<a class="dropdown-item" th:href="@{/InserirAluno}"><i class="fa fa-graduation-cap"></i>
 								Cadatrar Aluno</a>
-							<a class="dropdown-item" th:href="@{listarExcluirAlunos}"><i class="fa fa-trash"></i>
+							<a class="dropdown-item" th:href="@{/listarExcluirAlunos}"><i class="fa fa-trash"></i>
 								Excluir
 								Aluno</a>
-							<a class="dropdown-item" th:href="@{listarAlunos}"><i class="fa fa-search"></i> Listar
+							<a class="dropdown-item" th:href="@{/listarAlunos}"><i class="fa fa-search"></i> Listar
 								Aluno</a>
 
 						</div>
@@ -51,17 +51,31 @@
 						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
 							<i class="fa fa-user"></i> Professor</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{inserirProfessor}"><i class="fa fa-graduation-cap"></i>
+							<a class="dropdown-item" th:href="@{/inserirProfessor}"><i class="fa fa-graduation-cap"></i>
 								Cadastrar Professor</a>
-							<a class="dropdown-item" th:href="@{listarExcluirProfessor}"><i class="fa fa-trash"></i> Excluir
+							<a class="dropdown-item" th:href="@{/listarExcluirProfessor}"><i class="fa fa-trash"></i> Excluir
 								Professor</a>
-							<a class="dropdown-item" th:href="@{listarEditarProfessor}"><i class="fa fa-pencil-square"></i>
+							<a class="dropdown-item" th:href="@{/listarEditarProfessor}"><i class="fa fa-pencil-square"></i>
 								Editar Professor</a>
-							<a class="dropdown-item" th:href="@{listarProfessores}"><i class="fa fa-search"></i> Listar Professor</a>
+							<a class="dropdown-item" th:href="@{/listarProfessores}"><i class="fa fa-search"></i> Listar Professor</a>
 
 						</div>
 
 					</li>
+					
+										<li class="nav-item dropdown">
+						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
+							<i class="fa fa-user"></i> Turma </a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" th:href="@{/carregarTurma}"><i class="fa fa-graduation-cap"></i>
+								Cadastrar Turma</a>
+															<a class="dropdown-item" th:href="@{/listarTurmas}"><i class="fa fa-graduation-cap"></i>
+								Listar Turmas</a>
+						</div>
+
+					</li>
+					
+					
 
 				</ul>
 				<span class="navbar-text">

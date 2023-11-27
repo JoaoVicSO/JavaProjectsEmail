@@ -17,7 +17,7 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 
-	<title>Página Principal</title>
+	<title>Cadastrar Turma</title>
 
 </head>
 
@@ -55,25 +55,37 @@
 						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
 							<i class="fa fa-user"></i> Professor</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{inserirProfessor}"><i class="fa fa-graduation-cap"></i>
+							<a class="dropdown-item" th:href="@{/inserirProfessor}"><i class="fa fa-graduation-cap"></i>
 								Cadastrar Professor</a>
-							<a class="dropdown-item" th:href="@{listarExcluirProfessor}"><i class="fa fa-trash"></i> Excluir
+							<a class="dropdown-item" th:href="@{/listarExcluirProfessor}"><i class="fa fa-trash"></i> Excluir
 								Professor</a>
-							<a class="dropdown-item" th:href="@{listarEditarProfessor}"><i class="fa fa-pencil-square"></i>
+							<a class="dropdown-item" th:href="@{/listarEditarProfessor}"><i class="fa fa-pencil-square"></i>
 								Editar Professor</a>
-							<a class="dropdown-item" th:href="@{listarProfessores}"><i class="fa fa-search"></i> Listar Professor</a>
+							<a class="dropdown-item" th:href="@{/listarProfessores}"><i class="fa fa-search"></i> Listar Professor</a>
 
+						</div>
+
+					</li>
+					
+										</li>
+					
+										<li class="nav-item dropdown">
+						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
+							<i class="fa fa-user"></i> Turma </a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" th:href="@{/carregarTurma}"><i class="fa fa-graduation-cap"></i>
+								Cadastrar Turma</a>
 						</div>
 
 					</li>
 					
 					<li class="nav-item dropdown">
 						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
-							<i class="fa fa-user"></i> Turma</a>
+							<i class="fa fa-user"></i> Turma </a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" th:href="@{/carregarTurma}"><i class="fa fa-graduation-cap"></i>
 								Cadastrar Turma</a>
-							<a class="dropdown-item" th:href="@{/listarTurmas}"><i class="fa fa-graduation-cap"></i>
+															<a class="dropdown-item" th:href="@{/listarTurmas}"><i class="fa fa-graduation-cap"></i>
 								Listar Turmas</a>
 						</div>
 
@@ -106,31 +118,53 @@
 
 	</header>
 
-	<section class="neo-section">
+<h2>+ Inserir Alunos na Turma </h2>
 
-		<div class="center neo-container">
-
-			<h1>Sistema de Gerenciamento de Alunos</h1>
-
-			<div class="botoes">
-
-				<div class="Wm">
-
-					<a class="btn btn-primary" th:href="@{InserirAluno}">Cadastrar Aluno</a>
-
-				</div>
-
-				<div class="Wm">
-
-					<a class="btn btn-success">Encontrar Aluno</a>
-
-				</div>
-
+	<form action="/inserirAlunosTurma" th:object="${turma}" method="post" name="inserirAlunosTurma">
+		
+		<div class="col-md-6 offset-md-3">
+			<div class="alert alert-danger" role="alert" th:if="${msg}">
+				<strong th:text="{msg}"></strong>
 			</div>
-
 		</div>
-
-	</section>
+		
+			<input type="hidden" name="curso" id="curso" th:field="*{curso}">
+			<input type="hidden" name="periodo" id="periodo" th:field="*{periodo}">
+			<input type="hidden" name="turno" id="turno" th:field="*{turno}">
+		
+		<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Código da Turma </label>
+				<input type="text" name="codTurma" id="codTurma" class="form-control" th:field="*{codTurma}" readonly="readonly">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Professor </label>
+				<input type="text" name="professor" id="professor" class="form-control" th:field="*{professor}" readonly="readonly">
+			</div>
+		</div>
+		
+				<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Selecione os Alunos</label>
+				<select multiple class="form-control" th:field="*{alunos}">
+					<option th:each="aluno:${alunos}" th:value="${aluno.id}"
+						th:text="${aluno.nome}">
+					</option>
+				</select>
+			</div>
+		</div>
+		
+		
+				<div class="form-group">
+			<div class="col-md-8 offset-md-5">
+				<input type="submit" value="Salvar" class="btn btn-primary" name="Salvar">
+			</div>
+		</div>
+	
+	</form>
 
 	<footer class="bg-primary text-center text-lg-start">
 

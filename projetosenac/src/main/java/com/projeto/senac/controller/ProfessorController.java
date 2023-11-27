@@ -29,24 +29,24 @@ public class ProfessorController {
 		return mv;
 	}
 	
-	@PostMapping("/inserirProfessor")
-	public ModelAndView insertProfessor(Professor professor) {
+	@PostMapping("/InserirProfessor")
+	public ModelAndView inserir(Professor professor) {
 		ModelAndView mv = new ModelAndView();
+
 		String out = serviceProfessor.cadastrarProfessor(professor);
-		if(out != null) {
-			mv.addObject("msg",out);
+		if (out != null) {// Existe um aluno com o mesmo CPF
+
 			mv.addObject("professor", new Professor());
-			mv.setViewName("Professor/inserirProfessor");
-			
+			mv.addObject("msg", out);
+			mv.setViewName("Aluno/InserirProfessor");
+
 		} else {
-			mv.addObject("professores", professorRepository.findAllOrderedById());
-			mv.setViewName("Professor/listarProfessores");
+			mv.setViewName("redirect:/listarProfessores");
+			
 		}
-		
-
-
 		return mv;
-	}
+	}	
+	
 
 	@GetMapping("/listarProfessores")
 	public ModelAndView listarProfessores() {

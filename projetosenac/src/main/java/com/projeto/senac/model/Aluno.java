@@ -1,6 +1,7 @@
 package com.projeto.senac.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,7 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import org.hibernate.annotations.ManyToAny;
 import com.projeto.senac.Enum.Curso;
 import com.projeto.senac.Enum.Status;
 
@@ -35,12 +38,21 @@ public class Aluno implements Serializable {
 	// Segunda Forma criando diretamente
 	
 	private String turno;
-	
 	private String matricula;
-	
 	private String cpf;
+	
+	@ManyToMany(mappedBy = "alunos")
+	private List<Turma> turmas;
 
 	// GET and SET
+	
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
 	
 	public String getCpf() {
 		return cpf;

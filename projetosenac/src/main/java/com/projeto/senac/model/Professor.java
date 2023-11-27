@@ -1,6 +1,7 @@
 package com.projeto.senac.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import com.projeto.senac.Enum.Titulacao;
 
@@ -27,6 +29,19 @@ public class Professor implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	private Titulacao titulacao;
+	
+	@OneToMany(mappedBy = "professor")
+	private List<Turma> turmas;
+	
+	// GET and SET
+	
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
 
 	public Long getId() {
 		return id;

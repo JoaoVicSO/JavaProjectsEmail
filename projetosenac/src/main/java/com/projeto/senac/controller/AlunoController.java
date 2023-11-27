@@ -27,7 +27,7 @@ public class AlunoController {
 		return mv;
 	}
 
-	@GetMapping("listarAlunos")
+	@GetMapping("/listarAlunos")
 	public ModelAndView listarAlunos() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("alunos", alunoRepository.findAllOrderedById());
@@ -73,7 +73,7 @@ public class AlunoController {
 		
 	}
 	
-	@PostMapping("/inserirAluno")
+	@PostMapping("/InserirAluno")
 	public ModelAndView inserir(Aluno aluno) {
 		ModelAndView mv = new ModelAndView();
 

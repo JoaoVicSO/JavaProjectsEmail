@@ -17,7 +17,7 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 
-	<title>Página Principal</title>
+	<title>Cadastrar Turma</title>
 
 </head>
 
@@ -55,29 +55,29 @@
 						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
 							<i class="fa fa-user"></i> Professor</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{inserirProfessor}"><i class="fa fa-graduation-cap"></i>
+							<a class="dropdown-item" th:href="@{/inserirProfessor}"><i class="fa fa-graduation-cap"></i>
 								Cadastrar Professor</a>
-							<a class="dropdown-item" th:href="@{listarExcluirProfessor}"><i class="fa fa-trash"></i> Excluir
+							<a class="dropdown-item" th:href="@{/listarExcluirProfessor}"><i class="fa fa-trash"></i> Excluir
 								Professor</a>
-							<a class="dropdown-item" th:href="@{listarEditarProfessor}"><i class="fa fa-pencil-square"></i>
+							<a class="dropdown-item" th:href="@{/listarEditarProfessor}"><i class="fa fa-pencil-square"></i>
 								Editar Professor</a>
-							<a class="dropdown-item" th:href="@{listarProfessores}"><i class="fa fa-search"></i> Listar Professor</a>
+							<a class="dropdown-item" th:href="@{/listarProfessores}"><i class="fa fa-search"></i> Listar Professor</a>
 
 						</div>
 
 					</li>
 					
-					<li class="nav-item dropdown">
+															<li class="nav-item dropdown">
 						<a class="nav-link dropwown-toggle" id="navbardrop" data-toggle="dropdown">
-							<i class="fa fa-user"></i> Turma</a>
+							<i class="fa fa-user"></i> Turma </a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" th:href="@{/carregarTurma}"><i class="fa fa-graduation-cap"></i>
-								Cadastrar Turma</a>
-							<a class="dropdown-item" th:href="@{/listarTurmas}"><i class="fa fa-graduation-cap"></i>
+															<a class="dropdown-item" th:href="@{/listarTurmas}"><i class="fa fa-graduation-cap"></i>
 								Listar Turmas</a>
 						</div>
 
 					</li>
+					
+					
 
 
 				</ul>
@@ -106,31 +106,74 @@
 
 	</header>
 
-	<section class="neo-section">
+<h2>+ Inserir Nova Turma </h2>
 
-		<div class="center neo-container">
-
-			<h1>Sistema de Gerenciamento de Alunos</h1>
-
-			<div class="botoes">
-
-				<div class="Wm">
-
-					<a class="btn btn-primary" th:href="@{InserirAluno}">Cadastrar Aluno</a>
-
-				</div>
-
-				<div class="Wm">
-
-					<a class="btn btn-success">Encontrar Aluno</a>
-
-				</div>
-
+	<form action="/inserirTurma" th:object="${turma}" method="post" name="inserirTurma">
+		
+		<div class="col-md-6 offset-md-3">
+			<div class="alert alert-danger" role="alert" th:if="${msg}">
+				<strong th:text="{msg}"></strong>
 			</div>
-
 		</div>
-
-	</section>
+		
+		<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Código da Turma </label>
+				<input type="text" name="codTurma" id="codTurma" class="form-control" placeholder="Digite o código"
+				th:field="*{codTurma}" required>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Professor </label>
+					<select class="form-control" th:field="*{professor}">
+						<option th:each="professor:${professores}" th:value="${professor.id}"
+						th:text="${professor.nome}">
+						</option>
+					</select>
+			</div>
+		</div>
+		
+				<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Selecione o Curso</label>
+				<select class="form-control" th:field="*{curso}">
+					<option th:each="curso : ${T(com.projeto.senac.Enum.Curso).values()}" th:value="${curso}"
+						th:text="${curso}">
+					</option>
+				</select>
+			</div>
+		</div>
+		
+						<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Selecione o Periodo</label>
+				<select class="form-control" th:field="*{periodo}">
+					<option th:each="periodo:${T(com.projeto.senac.Enum.Periodo).values()}" th:value="${periodo}"
+						th:text="${periodo}">
+					</option>
+				</select>
+			</div>
+		</div>
+		
+				<div class="form-group">
+			<div class="col-md-6 offset-md-3">
+				<label>Selecione o Turno</label>
+				<select class="form-control" th:field="*{turno}">
+					<option th:value="'M'" th:text="Matutino"></option>
+					<option th:value="'N'" th:text="Noturno"></option>
+				</select>
+			</div>
+		</div>
+		
+				<div class="form-group">
+			<div class="col-md-8 offset-md-5">
+				<input type="submit" value="Carregar" class="btn btn-primary" name="Carregar">
+			</div>
+		</div>
+	
+	</form>
 
 	<footer class="bg-primary text-center text-lg-start">
 
